@@ -30,8 +30,7 @@ public class preface {
 		count[idx] += (val*75*scale);
 		if(remainder<9*scale){
 			return;
-		}
-		if(remainder >= 9*scale && remainder<19*scale){
+		}else if(remainder<19*scale){
 			count[idx] += (remainder-(9*scale-1));
 		}else if(remainder < 29*scale){
 			count[idx] += ((remainder-(19*scale-1))*2 + 10*scale);
