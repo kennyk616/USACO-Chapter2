@@ -7,8 +7,9 @@ PROG: preface
 public class preface {
 	static int []count = new int[7];
 	static char[] chars = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
-	                             
-	static void countI(int n){
+	static int n;
+	
+	static void countI(){
 		int num5 = n/5;
 		int remainder = n%5;
 		count[0] += num5*7;
@@ -23,7 +24,7 @@ public class preface {
 		}
 	}
 	
-	static void count10s(int n, int idx, int scale){
+	static void count10s(int idx, int scale){
 		int val = n/(50*scale);
 		int remainder = n%(50*scale);
 		count[idx] += (val*75*scale);
@@ -45,7 +46,7 @@ public class preface {
 		}
 	}
 	
-	static void count5s(int n, int idx, int scale){
+	static void count5s(int idx, int scale){
 		int num100 = n/(10*scale);
 		int remainder = n%(10*scale);
 		count[idx] += num100*5*scale;
@@ -63,16 +64,14 @@ public class preface {
 		// TODO Auto-generated method stub
 		BufferedReader br = new BufferedReader(new FileReader("preface.in"));
 		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("preface.out")));
-		int n = Integer.parseInt(br.readLine());
-		countI(n);
+		n = Integer.parseInt(br.readLine());
+		countI();
 		
 		for(int i = 0; i<6; i++){
-			int div = i/2;
-			int rem = i%2;
-			if(rem==0){
-				count5s(n, i+1, (int)(Math.pow(10.0, div)));
+			if(i%2==0){
+				count5s(i+1, (int)(Math.pow(10.0, i/2)));
 			}else{
-				count10s(n, i+1, (int)(Math.pow(10.0, div)));
+				count10s(i+1, (int)(Math.pow(10.0, i/2)));
 			}
 		}
 		
