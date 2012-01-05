@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.HashSet;
-import java.util.Scanner;
 import java.util.StringTokenizer;
 /*
 ID: kennyk61
